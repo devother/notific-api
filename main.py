@@ -7,7 +7,7 @@ router = RabbitRouter("amqp://guest:guest@localhost:5674")
 @router.post("/notific")
 async def make_order(name: str):
     await router.broker.publish(
-            f"Новое уведомление: {name}",
+            f"Notification: {name}",
             queue="notific",
         )
     return {"data" : "OK"}
